@@ -420,6 +420,10 @@
             H 3 * * * %BUILD_TARGET=nixlbench;UPDATE_LATEST=true
             # Build nixl nightly around 4 AM - Ubuntu 24.04
             H 4 * * * %BUILD_TARGET=nixl;UPDATE_LATEST=true
+            # Build vLLM weights-base nightly around 2 AM (used by the PR vLLM/SGLang sanity)
+            H 2 * * * %BUILD_TARGET=vllm-base;UPDATE_LATEST=true
+            # Build SGLang weights-base nightly around 2 AM
+            H 2 * * * %BUILD_TARGET=sglang-base;UPDATE_LATEST=true
     # Manual build parameters
     parameters:
       - choice:
@@ -427,6 +431,8 @@
           choices:
             - "nixlbench"
             - "nixl"
+            - "vllm-base"
+            - "sglang-base"
           description: >
             Build target:<br/>
             • <b>nixlbench</b>: Builds NIXLBench container with benchmark tools<br/>
